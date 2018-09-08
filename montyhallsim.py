@@ -89,6 +89,7 @@ def participantChoiceResult():
         round[4] = False
 
     if round[4] == True:
+        # Update Score table
         wins = results[0]
         wins += 1
         results[0] = wins
@@ -113,6 +114,7 @@ def participantChoiceResult():
             round[5] = False
 
     if round[5] == True:
+        # Update Score Table
         wins = results[1]
         wins += 1
         results[1] = wins
@@ -125,6 +127,7 @@ def participantChoiceResult():
         round[6] = True
     
     if round[6] == True:
+        # Update Score Table
         wins = results[2]
         wins += 1
         results[2] = wins
