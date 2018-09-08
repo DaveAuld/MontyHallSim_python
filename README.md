@@ -21,3 +21,6 @@ stick = 33%
 random = 50%
 swap = 66%
 
+The command line can take parameters as follows;
+-o, --output    This flag will turn on individual round output on the display, hidden by default
+-r, --round ROUNDS  This parameter with set the number of rounds to ROUNDS. Default is 1000.
