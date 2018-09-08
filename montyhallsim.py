@@ -1,26 +1,53 @@
 #Monty Hall Simulator
-from random import randint, choice
-from timeit import default_timer as timer
 
 
-#Setup default number of rounds
-numberOfRounds = 1000
+import argparse                             # argparse added to support command line parameter functionality
 
-#Display individual round output
-roundOutput = True
+from random import randint, choice          # used for selections
+from timeit import default_timer as timer   # used for timing the runs.
 
-#current round array contains, [RoundNumber, WinningNumber, ParticipantPick, HostShow, ResultStick, ResultRandom, ResultSwap]
+# Application Defaults
+numberOfRounds = 1000                       # Set default for number of rounds
+roundOutput = False                         # Set default for display of individual round output
+
+# setup the argparse
+parser = argparse.ArgumentParser(prog="montyhallsim", 
+                                    description='''Monty Hall Simulation. This is a basic Monty Hall Simulation, the program will run for a given number of rounds  
+                                            and display the number of winds for the different methods (stick/random/swap).''', 
+                                    epilog='''For more information on the Monty Hall paradox, visit; \n
+                                        https://en.wikipedia.org/wiki/Monty_Hall_problem''')
+# add argument for displaying the round output.
+parser.add_argument("-o", "--output", action="store_true", help="Display individual round output. Default is hidden.")
+parser.add_argument("-r", "--rounds", nargs=1, type=int, default=1000, help="Set the number of rounds. Integer. Default is 1000.")
+args = parser.parse_args()
+
+
+if args.output:
+     roundOutput=True
+
+if args.rounds:
+    if type(args.rounds) is int:            # If not supplied on cli, defaults value returns int type
+        numberOfRounds = args.rounds
+    elif type(args.rounds) is list:         # If supplied on cli, it returns a list of int, need 1st one.
+        numberOfRounds = args.rounds[0]
+        if numberOfRounds == 0:             # Prevent user providing 0 as a number
+            numberOfRounds = 1
+
+
+
+
+# current round array contains, [RoundNumber, WinningNumber, ParticipantPick, HostShow, ResultStick, ResultRandom, ResultSwap]
 round = [0,0,0,0,False,False,False]
 
-#count of wins for each strategy, stick, random, swap
+# count of wins for each strategy, stick, random, swap
 results = [0,0,0]
 
-#Timings for Run
+# Timings for Run
 startTime = timer()
 finsihTime = timer()
 
 def main():
-    #initialise current round by setting up the winning number
+    # Initialise current round by setting up the winning number
     print("Monty Hall Simulator, 3 boxes.")
     print("Number of Rounds: " + str(numberOfRounds))
     if roundOutput == True:
@@ -137,7 +164,11 @@ def participantChoiceResult():
         printRoundOutput()
 
 def printRoundOutput():
+    # Display the ouptut for the current round
     print(str(round[0]) + ":" + str(round[1]) + ":" + str(round[2]) + ":" + str(round[3]) + ":" + str(round[4]) + ":" + str(round[5]) + ":" + str(round[6]))
+
+
+
 
 #Let's Go!
 main()
