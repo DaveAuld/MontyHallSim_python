@@ -1,5 +1,5 @@
 # MontyHallSim_python
-Monty Hall Simulation in Python
+**Monty Hall Simulation in Python**
 
 This is a probability simulation of which a more extended description can be found on Wikipedia at;
 https://en.wikipedia.org/wiki/Monty_Hall_problem
@@ -21,6 +21,8 @@ stick = 33%
 random = 50%
 swap = 66%
 
-The command line can take parameters as follows;
--o, --output    This flag will turn on individual round output on the display, hidden by default
--r, --round ROUNDS  This parameter with set the number of rounds to ROUNDS. Default is 1000.
+**Command Line Options**  
+The command line can take parameters as follows;  
+-o, --output    This flag will turn on individual round output on the display, hidden by default.  
+-r, --round ROUNDS  This parameter will set the number of rounds to ROUNDS. Default is 1000.  
+
