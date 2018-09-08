@@ -23,6 +23,28 @@ swap = 66%
 
 **Command Line Options**  
 The command line can take parameters as follows;  
--o, --output    This flag will turn on individual round output on the display, hidden by default.  
--r, --round ROUNDS  This parameter will set the number of rounds to ROUNDS. Default is 1000.  
+`-o, --output`    This flag will turn on individual round output on the display, hidden by default.  
+`-r, --round ROUNDS`  This parameter will set the number of rounds to ROUNDS. Default is 1000.  
 
+For the default, with no command line options set, the output will look as follows;  
+
+```Monty Hall Simulator, 3 boxes.
+Number of Rounds: 1000
+Results for Number of Rounds: 1000
+============================================================
+Duration, 0.00724301279015 seconds.
+Stick  = 329 : 32.9 %
+Random = 492 : 49.2 %
+Swap   = 671 : 67.1 %
+```
+
+If you do select the `--output` option then you will see the addition of the following;
+```
+RoundNumber, WinningNumber, ParticipantPick, HostShow, ResultStick, ResultRandom, ResultSwap
+1:3:1:2:False:False:True
+2:2:1:3:False:False:True
+3:3:2:1:False:True:True
+4:1:3:2:False:False:True
+5:3:3:1:True:True:False
+etc......
+```
