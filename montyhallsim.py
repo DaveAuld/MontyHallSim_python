@@ -1,8 +1,13 @@
-#Monty Hall Simulator
-
+# Monty Hall Simulator
+#######################################
+# Author: Dave Auld
+# Version: 1.1
+# Date: 9th September 2018
+#
+# License: MIT
+#######################################
 
 import argparse                             # argparse added to support command line parameter functionality
-
 from random import randint, choice          # used for selections
 from timeit import default_timer as timer   # used for timing the runs.
 
@@ -13,14 +18,13 @@ roundOutput = False                         # Set default for display of individ
 # setup the argparse
 parser = argparse.ArgumentParser(prog="montyhallsim", 
                                     description='''Monty Hall Simulation. This is a basic Monty Hall Simulation, the program will run for a given number of rounds  
-                                            and display the number of winds for the different methods (stick/random/swap).''', 
+                                            and display the number of wins for the different methods (stick/random/swap).''', 
                                     epilog='''For more information on the Monty Hall paradox, visit; \n
                                         https://en.wikipedia.org/wiki/Monty_Hall_problem''')
 # add argument for displaying the round output.
 parser.add_argument("-o", "--output", action="store_true", help="Display individual round output. Default is hidden.")
 parser.add_argument("-r", "--rounds", nargs=1, type=int, default=1000, help="Set the number of rounds. Integer. Default is 1000.")
 args = parser.parse_args()
-
 
 if args.output:
      roundOutput=True
@@ -32,9 +36,6 @@ if args.rounds:
         numberOfRounds = args.rounds[0]
         if numberOfRounds == 0:             # Prevent user providing 0 as a number
             numberOfRounds = 1
-
-
-
 
 # current round array contains, [RoundNumber, WinningNumber, ParticipantPick, HostShow, ResultStick, ResultRandom, ResultSwap]
 round = [0,0,0,0,False,False,False]
@@ -67,9 +68,7 @@ def main():
 
 def initialPick():
     #Increment Round Number
-    currentRound = round[0]
-    currentRound +=1
-    round[0] = currentRound
+    round[0] += 1
 
     # Select the rounds winning box, random choice
     round[1] = randint(1,3)
@@ -77,6 +76,7 @@ def initialPick():
     # Select the participant random choice
     round[2] = randint(1,3)
 
+    #Host does their reveal.
     hostPick()
 
 def hostPick():
@@ -106,6 +106,7 @@ def hostPick():
         if round[1] == 3 and round[2] == 2:
             round[3] = 1    #Participant Picked 3, correct is 2, Host Show 1
 
+    #Participant has their 2nd choice
     participantChoiceResult()
 
 def participantChoiceResult():
@@ -166,9 +167,6 @@ def participantChoiceResult():
 def printRoundOutput():
     # Display the ouptut for the current round
     print(str(round[0]) + ":" + str(round[1]) + ":" + str(round[2]) + ":" + str(round[3]) + ":" + str(round[4]) + ":" + str(round[5]) + ":" + str(round[6]))
-
-
-
 
 #Let's Go!
 main()
