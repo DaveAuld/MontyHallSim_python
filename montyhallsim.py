@@ -1,8 +1,8 @@
 # Monty Hall Simulator
 #######################################
 # Author: Dave Auld
-# Version: 1.1
-# Date: 9th September 2018
+# Version: 1.2
+# Date: 10th September 2018
 #
 # License: MIT
 #######################################
@@ -15,13 +15,13 @@ from timeit import default_timer as timer   # used for timing the runs.
 numberOfRounds = 1000                       # Set default for number of rounds
 roundOutput = False                         # Set default for display of individual round output
 
-# setup the argparse
+# Setup the argparse
 parser = argparse.ArgumentParser(prog="montyhallsim", 
                                     description='''Monty Hall Simulation. This is a basic Monty Hall Simulation, the program will run for a given number of rounds  
                                             and display the number of wins for the different methods (stick/random/swap).''', 
                                     epilog='''For more information on the Monty Hall paradox, visit; \n
                                         https://en.wikipedia.org/wiki/Monty_Hall_problem''')
-# add argument for displaying the round output.
+# Sdd argument for displaying the round output.
 parser.add_argument("-o", "--output", action="store_true", help="Display individual round output. Default is hidden.")
 parser.add_argument("-r", "--rounds", nargs=1, type=int, default=1000, help="Set the number of rounds. Integer. Default is 1000.")
 args = parser.parse_args()
@@ -55,7 +55,7 @@ def main():
         print("RoundNumber, WinningNumber, ParticipantPick, HostShow, ResultStick, ResultRandom, ResultSwap")
 
     for round[0] in range(numberOfRounds):
-        initialPick()
+        runRound()
     else:
         finsihTime = timer()
         duration = finsihTime - startTime
@@ -66,8 +66,8 @@ def main():
         print("Random = " + str(results[1]) + " : " + str((float(results[1]) / numberOfRounds) * 100) + " %")
         print("Swap   = " + str(results[2]) + " : " + str((float(results[2]) / numberOfRounds) * 100) + " %")
 
-def initialPick():
-    #Increment Round Number
+def runRound():
+    # Increment Round Number
     round[0] += 1
 
     # Select the rounds winning box, random choice
@@ -76,7 +76,7 @@ def initialPick():
     # Select the participant random choice
     round[2] = randint(1,3)
 
-    #Host does their reveal.
+    # Host does their reveal next.
     hostPick()
 
 def hostPick():
@@ -106,46 +106,38 @@ def hostPick():
         if round[1] == 3 and round[2] == 2:
             round[3] = 1    #Participant Picked 3, correct is 2, Host Show 1
 
-    #Participant has their 2nd choice
+    #Participant has their 2nd choice next
     participantChoiceResult()
 
 def participantChoiceResult():
     # 1st Case Participant Sticks
     if round[1] == round[2]:
         round[4] = True
+        results[0] += 1         # Increment Win count
     else:
         round[4] = False
-
-    if round[4] == True:
-        # Update Score table
-        wins = results[0]
-        wins += 1
-        results[0] = wins
 
     # 2nd Case Participant Picks Random box from remaining 2
     if round[3] == 1:
         if choice([2,3]) == round[1]:
             round[5] = True
+            results[1] += 1     # Increment Win count
         else:
             round[5] = False
     
     if round[3] == 2:
         if choice([1,3]) == round[2]:
             round[5] = True
+            results[1] += 1     # Increment Win count
         else:
             round[5] = False
     
     if round[3] == 3:
         if choice([1,2]) == round[2]:
             round[5] = True
+            results[1] += 1     # Increment Win count
         else:
             round[5] = False
-
-    if round[5] == True:
-        # Update Score Table
-        wins = results[1]
-        wins += 1
-        results[1] = wins
 
     # 3rd Case Participant Swaps box
     if round[2] == round[1]:
@@ -153,12 +145,7 @@ def participantChoiceResult():
         round[6] = False
     else:
         round[6] = True
-    
-    if round[6] == True:
-        # Update Score Table
-        wins = results[2]
-        wins += 1
-        results[2] = wins
+        results[2] += 1         # Increment win count
     
     #Show round output
     if roundOutput == True:
@@ -168,5 +155,5 @@ def printRoundOutput():
     # Display the ouptut for the current round
     print(str(round[0]) + ":" + str(round[1]) + ":" + str(round[2]) + ":" + str(round[3]) + ":" + str(round[4]) + ":" + str(round[5]) + ":" + str(round[6]))
 
-#Let's Go!
+# Let's Go!
 main()
