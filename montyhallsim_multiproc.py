@@ -140,7 +140,7 @@ if __name__ == "__main__":
     # Add argument for displaying the round output.
     parser.add_argument("-o", "--output", action="store_true", help="Display individual round output. Default is hidden.")
     parser.add_argument("-r", "--rounds", nargs=1, type=int, default=numberOfRounds, help="Set the number of rounds. Integer. Default is " + str(numberOfRounds) +".")
-    parser.add_argument("-t", "--procs", nargs=1, type=int, default=processLimit, help="Set the number of processes. Integer. Default is CPU Logical Cores. " + str(processLimit))
+    parser.add_argument("-p", "--procs", nargs=1, type=int, default=processLimit, help="Set the number of processes. Integer. Default is CPU Logical Cores. " + str(processLimit))
     args = parser.parse_args()
 
     if args.output:
