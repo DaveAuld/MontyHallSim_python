@@ -26,6 +26,12 @@ The command line can take parameters as follows;
 `-o, --output`    This flag will turn on individual round output on the display, hidden by default.  
 `-r, --round ROUNDS`  This parameter will set the number of rounds to ROUNDS. Default is 1000.  
 
+Threaded Version - The threaded version has the following additional parameter;
+`-t, --threads THREADS` This parameter will set the number of threads to THREADS. Default is CPU Logical Cores.
+
+Multiprocess Version - The multiprocess version has the following additional parameter;
+`-p, --procs PROCS` This parameter will set the number of processes in the pool to PROCS. Default is CPU Logical Cores.
+
 For the default, with no command line options set, the output will look as follows;  
 
 ```Monty Hall Simulator, 3 boxes.
@@ -48,3 +54,4 @@ RoundNumber, WinningNumber, ParticipantPick, HostShow, ResultStick, ResultRandom
 5:3:3:1:True:True:False
 etc......
 ```
+Enabling the round output will have a significant impact on performance.
