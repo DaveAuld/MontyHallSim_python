@@ -1,9 +1,11 @@
-# Monty Hall Simulator
+# Monty Hall Simulator - Single Thread
 #######################################
 # Author: Dave Auld
 # Version: 1.2
 # Date: 10th September 2018
-#
+# Description: Monty Hall Simulation
+# using single thread.
+# 
 # License: MIT
 #######################################
 

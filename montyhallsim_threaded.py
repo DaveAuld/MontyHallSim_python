@@ -3,6 +3,12 @@
 # Author: Dave Auld
 # Version: 1.0
 # Date: 11th September 2018
+# Description: Monty Hall Simulation
+# using threading and lock for 
+# coordinating any print output. 
+# Demonstrates threading does not help
+# performance in cpu intensive programs
+# in python. 
 #
 # License: MIT
 #######################################
