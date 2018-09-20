@@ -4,6 +4,8 @@
 This is a probability simulation of which a more extended description can be found on Wikipedia at;
 https://en.wikipedia.org/wiki/Monty_Hall_problem
 
+This originally stated out just as a single threaded look at implementation of the problem, but grew to include the different effects of single threading, multi-threading and multi-process using python for a cpu focused problem.
+
 In summary, a contestant is given a choice of 3 options, the host knows where the winning option is.
 The host then shows the contest one of the losing options.
 The contestant can then either stick with their original choice or swap their choice to the other unrevealed option.
