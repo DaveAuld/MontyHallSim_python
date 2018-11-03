@@ -142,7 +142,7 @@ def hostPick(roundData):
             round[3] = choice([1,2])    #Participant Pick 3, Host Show 1 or 2
 
     # 2nd Case, Participant has chosen the wrong box
-    if round[1] <> round[2]:
+    if round[1] != round[2]:
         if round[1] == 1 and round[2] == 2:
             round[3] = 3    #Participant Picked 1, correct is 2, Host Show 3
         if round[1] == 1 and round[2] == 3:
